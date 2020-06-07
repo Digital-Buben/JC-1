@@ -1,42 +1,58 @@
 package L3.domain;
 
-public class Car {
+import L4.domain.GroundTransport;
+
+public class Car extends GroundTransport {
+    private long carID;
+
     private int weight;
-    private String power;
+
     private String type;
 
-    //пустой конструктор
     public Car() {
     }
 
-    public Car(int weight, String power, String type) {
+    public Car(int weight) {
         this.weight = weight;
-        this.power = power;
-        this.type = type;
+    }
+
+    //I've decided should be the only parameter set manually.
+
+    public long getCarID() {
+        return carID;
+    }
+
+    public void setCarID(long carID) {
+        this.carID = carID;
     }
 
     public int getWeight() {
         return weight;
     }
 
-    public String getPower() {
-        return power;
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
     public String getType() {
         return type;
     }
 
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
-    public void setPower(String power) {
-        this.power = power;
-    }
-
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "Transport [" +getTransportID() +
+                "Car {"+
+                "carID = " + carID+
+                ", car weight = " + weight+
+                ", car type= " + type + "}";
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }
