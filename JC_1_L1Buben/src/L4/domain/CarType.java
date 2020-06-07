@@ -6,7 +6,8 @@ public enum CarType {
     TRUCK("Truck");
     private String typeDescription;
 
-    CarType(String s) {
+    CarType(String typeDescription) {
+        this.typeDescription = typeDescription;
     }
 
     public String getTypeDescription() {

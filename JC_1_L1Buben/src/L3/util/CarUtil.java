@@ -42,4 +42,11 @@ public class CarUtil {
         defineType(car);
         return car;
     }
+    public static Car[] generateCar(int quantity) {
+        Car[] cars = new Car[quantity];
+        for (int j = 0; j < quantity ; j++) {
+            cars[j] = generateCar();
+        }
+        return cars;
+    }
 }
