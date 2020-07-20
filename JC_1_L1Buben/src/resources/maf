@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cars>
+    <car>
+        <id>1</id>
+        <vin>123123144</vin>
+        <horsePower>1231241</horsePower>
+        <manufactured> 12414fwfe</manufactured>
+        <model>afjkajfja 123124</model>
+    </car>
+
+
+    <car>
+        <id>2</id>
+        <vin>23465</vin>
+        <horsePower>986509741</horsePower>
+        <manufactured> gggg414fwfe</manufactured>
+        <model>kalajfja 123124</model>
+    </car>
+
+</cars>
