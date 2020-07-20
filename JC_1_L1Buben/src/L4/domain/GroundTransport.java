@@ -1,25 +1,54 @@
 package L4.domain;
 
-public class GroundTransport extends Transport {
-    private final String GroundTransportID = "111";// = 1 for ground transport and 2 digit for chassis type
+import L5.enums.ChassisType;
+import L5.enums.PropulsionSystem;
+import L5.enums.WayType;
 
-    private final String ChassisType = "11"; // можно "обмазаться" энамами с двойной классификацией шасси, но я уже продемонстрировал
-    // работу с энамами и поэтому задам FINAL(только для машин), но при этом оставлю SETTER(словно этот параметр изменяемый и
-    // находится в 2 энамах). Следовательно, ID будет тоже фиксированным.
+public abstract class GroundTransport {
+    protected int groundTransportID;
 
-    public String getGroundTransportID() {
-        return GroundTransportID;
+    protected PropulsionSystem propulsionSystem;
+
+    protected ChassisType chassisType;
+
+    protected WayType wayType;
+
+    public int getGroundTransportID() {
+        return groundTransportID;
     }
 
-    /*public void setGroundTransportID(String groundTransportID) {
-        GroundTransportID = groundTransportID;
-    }*/
+    public abstract void setGroundTransportID();
 
-    public String getChassisType() {
-        return ChassisType;
+    public PropulsionSystem getPropulsionSystem() {
+        return propulsionSystem;
     }
 
-    /*public void setChassisType(String chassisType) {
-        ChassisType = chassisType;
-    }*/
+    public void setPropulsionSystem(PropulsionSystem propulsionSystem) {
+        this.propulsionSystem = propulsionSystem;
+    }
+
+    public ChassisType getChassisType() {
+        return chassisType;
+    }
+
+    public void setChassisType(ChassisType chassisType) {
+        this.chassisType = chassisType;
+    }
+
+    public WayType getWayType() {
+        return wayType;
+    }
+
+    public void setWayType(WayType wayType) {
+        this.wayType = wayType;
+    }
+
+    protected GroundTransport(PropulsionSystem propulsionSystem, ChassisType chassisType, WayType wayType) {
+        this.propulsionSystem = propulsionSystem;
+        this.chassisType = chassisType;
+        this.wayType = wayType;
+    }
+
+    protected GroundTransport() {
+    }
 }

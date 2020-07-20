@@ -1,12 +1,11 @@
 package L3.util;
 
 import L3.domain.Car;
-import L4.domain.CarType;
+import L5.enums.CarType;
 
 import java.util.Random;
 
 public class CarUtil {
-
     //CarID should be defined ONLY by computer
     static long carID = 0L;
 
@@ -16,7 +15,7 @@ public class CarUtil {
     }
 
     public static int generateWeight() {
-        return new Random().nextInt(10000) + 300;
+        return new Random().nextInt(4000) + 300;
     }
 
     //Car type should be defined ONLY by computer
@@ -25,12 +24,12 @@ public class CarUtil {
         //SWICTH is not Suitable (need to create either a few booleans or create additional IF ELSE and
         //then SWITCH or generate weight 1 up to 3)
         if (car.getWeight() < 1501) {
-            car.setType(CarType.PASSENGER_CAR.getTypeDescription());
+            car.setCarType(CarType.PASSENGER_CAR);
         } else {
             if (car.getWeight() > 1500 && car.getWeight() < 3501) {
-                car.setType(CarType.OFFROADER.getTypeDescription());
+                car.setCarType(CarType.OFFROADER);
             } else {
-                car.setType(CarType.TRUCK.getTypeDescription());
+                car.setCarType(CarType.TRUCK);
             }
         }
     }
@@ -41,5 +40,13 @@ public class CarUtil {
         car.setWeight(generateWeight());
         defineType(car);
         return car;
+    }
+
+    public static Car[] generateCars(int quantity){
+        Car[] cars = new Car[quantity];
+        for (int i = 0; i< quantity; i++){
+            generateCar();
+        }
+        return cars;
     }
 }
