@@ -1,33 +1,52 @@
 package L10.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Words implements Composite {
 
-    private List<Composite> components = new ArrayList<>();
+    private String x;
 
-    public void addComponent (Composite component){
-        components.add(component);
+    public static final String REGEXP_WORDS ="[\\w+,\\.-]+[^(,.!?\"\\(\\)\\s+)]";
+
+    public Words(String x) {
+        this.x = x;
     }
 
-    public void addComponent (Composite component, int index){
-        components.add(index, component);
+    public void addComponent(String string){
+        x+=string;
     }
 
-    public void removeComponent (Composite component){
-        components.remove(component);
+    public void addComponent(String string, int index){
+        StringBuffer buffer = new StringBuffer(x);
+        buffer.insert(string.length(), string, index, index + string.length());
+        x = buffer.toString();
     }
 
-    public void removeComponent (int index){
-        components.remove(index);
+    public void removeComponent(String string){
+        x.replace(string, "");
     }
 
-    public void getComponent (int index){
-        components.get(index);
+    public void removeComponent(int index){
+        StringBuffer buffer = new StringBuffer(x);
+        buffer.deleteCharAt(index);
+        x = buffer.toString();
     }
 
-    public void setComponent (int index, Composite component){
-        components.set(index, component);
+    public String getComponent(int index){
+        char[] c = new char[1];
+        c[0] = x.charAt(index);
+
+        return c.toString();
+    }
+
+    public void setComponent(int index, String string){
+        StringBuffer buffer = new StringBuffer(x);
+        for (int i = index; i <index+string.length() ; i++) {
+            buffer.setCharAt(i,string.charAt(i-index));
+        }
+        x = buffer.toString();
+    }
+
+    @Override
+    public String toString() {
+        return x;
     }
 }
